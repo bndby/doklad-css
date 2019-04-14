@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shower Presentation Engine</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="shower/themes/material/styles/styles.css">
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+        }
+    </style>
+</head>
+<body class="shower list">
+
+    <header class="caption">
+        <h1>CSS. Практика</h1>
+        <p>Бондаренко Юрий</p>
+    </header>
+
+    <section class="slide">
+        <h2>CSS. Практика</h2>
+        <p>Доклад про CSS</p>
+        <p><a href="https://bnd.by/">Бондаренко Юрий</a></p>
+    </section>
+
+    <section class="slide">
+        <h2>CSS. Теория</h2>
+        <p>Вадим Макеев и его доклад "Мой ванильный CSS"</p>
+    </section>
+
+    <section class="slide">
+        <h2>Кратко по понятиям</h2>
+        <ol>
+            <li>Чистый "ванильный" CSS</li>
+            <li>Препроцессоры CSS</li>
+            <li>Постпроцессоры</li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2>Чистый CSS</h2>
+        <div class="columns two">
+            <div>
+                <h3 style="color:green;">Достоинства</h3>
+                <ol>
+                    <li>Стандарт</li>
+                </ol>
+            </div>
+            <div>
+                <h3 style="color:red;">Недостатки</h3>
+                <ol>
+                    <li>Функции</li>
+                    <li>Переменные</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Препроцессоры</h2>
+        <p>SASS/SCSS, LESS, Stylus</p>
+        <div class="columns two">
+            <div>
+                <h3 style="color:green;">Достоинства</h3>
+                <ol>
+                    <li>Язык программирования</li>
+                </ol>
+            </div>
+            <div>
+                <h3 style="color:red;">Недостатки</h3>
+                <ol>
+                    <li>Новый синтаксис</li>
+                    <li>Компилируется</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Постпроцессоры</h2>
+        <p>PostCss</p>
+        <div class="columns two">
+            <div>
+                <h3 style="color:green;">Достоинства</h3>
+                <ol>
+                    <li>Плагины</li>
+                </ol>
+            </div>
+            <div>
+                <h3 style="color:red;">Недостатки</h3>
+                <ol>
+                    <li>Настройки</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Бестиарий</h2>
+        <p>Инструменты разработчика:</p>
+        <ul>
+            <li>gulp - Таск менеджер</li>
+            <li>gulp-postcss - Постпроцессор</li>
+            <li>postcss-preset-env - набор плагинов для заданного окружения</li>
+            <li>postcss-import - пример "нестандартного" плагина</li>
+            <li>postcss-rtl - пример плагина-генератора кода</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Бестиарий</h2>
+
+        <p>Полезное:</p>
+        <ul>
+            <li>stylelint - твой личный ревьювер стилей</li>
+            <li>gulp-sourcemap - карты исходного кода</li>
+            <li>gulp-csso - минификация стилей</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Практика</h2>
+        <p>Разбираем кусок конфига</p>
+        <p>Практические кейсы</p>
+    </section>
+
+    <section class="slide">
+        <h2>Конфиг PostCSS</h2>
+        <pre><code>
+const atImport = require( 'postcss-import' )
+const postcssPresetEnv = require( 'postcss-preset-env' )
+const browsers = [ 'last 2 versions', 'ie >= 11', 'iOS >= 9' ]
+</code></pre>
+    </section>
+
+    <section class="slide">
+            <h2>Конфиг PostCSS</h2>
+            <pre><code>
+    const postcssOptions = [
+        atImport(), postcssPresetEnv({
+            stage: 0,
+            autoprefixer: {
+                grid: true, browsers: browsers
+            }
+        })]
+    </code></pre>
+        </section>
+
+
+    <div class="progress"></div>
+
+    <script src="shower/shower.min.js"></script>
+
+</body>
+</html>
