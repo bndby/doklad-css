@@ -8,15 +8,21 @@
     <style>
         .shower {
             --slide-ratio: calc(16 / 9);
+            font: 22px/1.8 'Roboto', sans-serif;
+        }
+        .slide pre code {
+            line-height: 1.6;
         }
     </style>
 </head>
 <body class="shower list">
 
+
     <header class="caption">
         <h1>CSS. Практика</h1>
         <p>Бондаренко Юрий</p>
     </header>
+
 
     <section class="slide">
         <h2>CSS. Практика</h2>
@@ -24,10 +30,12 @@
         <p><a href="https://bnd.by/">Бондаренко Юрий</a></p>
     </section>
 
+
     <section class="slide">
         <h2>CSS. Теория</h2>
         <p>Вадим Макеев и его доклад "Мой ванильный CSS"</p>
     </section>
+
 
     <section class="slide">
         <h2>Кратко по понятиям</h2>
@@ -37,6 +45,7 @@
             <li>Постпроцессоры</li>
         </ol>
     </section>
+
 
     <section class="slide">
         <h2>Чистый CSS</h2>
@@ -56,6 +65,7 @@
             </div>
         </div>
     </section>
+
 
     <section class="slide">
         <h2>Препроцессоры</h2>
@@ -77,6 +87,7 @@
         </div>
     </section>
 
+
     <section class="slide">
         <h2>Постпроцессоры</h2>
         <p>PostCss</p>
@@ -96,6 +107,7 @@
         </div>
     </section>
 
+
     <section class="slide">
         <h2>Бестиарий</h2>
         <p>Инструменты разработчика:</p>
@@ -108,6 +120,7 @@
         </ul>
     </section>
 
+
     <section class="slide">
         <h2>Бестиарий</h2>
 
@@ -119,6 +132,7 @@
         </ul>
     </section>
 
+
     <section class="slide">
         <h2>Практика</h2>
         <p>Разбираем кусок конфига</p>
@@ -128,24 +142,133 @@
     <section class="slide">
         <h2>Конфиг PostCSS</h2>
         <pre><code>
-const atImport = require( 'postcss-import' )
 const postcssPresetEnv = require( 'postcss-preset-env' )
 const browsers = [ 'last 2 versions', 'ie >= 11', 'iOS >= 9' ]
 </code></pre>
     </section>
 
+
     <section class="slide">
-            <h2>Конфиг PostCSS</h2>
-            <pre><code>
-    const postcssOptions = [
-        atImport(), postcssPresetEnv({
-            stage: 0,
-            autoprefixer: {
-                grid: true, browsers: browsers
-            }
-        })]
-    </code></pre>
-        </section>
+        <h2>Конфиг PostCSS</h2>
+        <pre><code>
+const postcssOptions = [
+    atImport(), postcssPresetEnv({
+        stage: 0,
+        autoprefixer: {
+            grid: true, browsers: browsers
+        }
+    })
+]
+        </code></pre>
+    </section>
+
+
+    <section class="slide">
+        <h2>Методики организации CSS. БЕМ</h2>
+        <ul>
+            <li>Блок</li>
+            <li>Элемент</li>
+            <li>Модификатор</li>
+        </ul>
+    </section>
+
+
+    <section class="slide">
+        <h2>Grid IE 10+</h2>
+        <p><a href="https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/">css-tricks.com</a></p>
+    </section>
+
+
+    <section class="slide">
+        <h2>Flex и dir=rtl</h2>
+
+    </section>
+
+
+    <section class="slide">
+        <h2>Склейка локальных импортов</h2>
+        
+        <pre><code>
+const atImport = require( 'postcss-import' )
+const postcssOptions = [
+    atImport(),
+    ...
+]
+        </code></pre>
+    </section>
+
+
+    <section class="slide">
+        <h2>Custom properties</h2>
+        <pre><code>
+:root {
+    --mainColor: red;
+}
+
+a {
+    color: var(--mainColor);
+}
+        </code></pre>
+    </section>
+
+
+    <section class="slide">
+        <h2>Custom properties</h2>
+        <pre><code>
+:root {
+    --danger-theme: {
+        color: white;
+        background-color: red;
+    }
+}
+
+.danger {
+    @apply --danger-theme;
+}
+        </code></pre>
+    </section>
+
+
+    <section class="slide">
+        <h2>Вложенные селекторы</h2>
+        <pre><code>
+a {
+    & span { color: white; }
+
+    @nest span & { color: blue; }
+
+    @media (min-width: 30em) { color: yellow; }
+}
+        </code></pre>
+    </section>
+
+
+    <section class="slide">
+        <h2>Media queries</h2>
+        <pre><code>
+@custom-media --phone (max-width: 480px);
+
+@media (--phone) {
+    /* стили для телефона */
+}
+        </code></pre>
+    </section>
+
+
+    <section class="slide">
+        <h2>Media queries</h2>
+        <pre><code>
+@media (width >= 768px) and (width <= 1200px) {
+    /* планшет */
+}
+
+@custom-media --only-tablet (width >= 768px) and (width <= 1200px);
+
+@media (--only-tablet) {
+    /* планшет */
+}
+        </code></pre>
+    </section>
 
 
     <div class="progress"></div>
