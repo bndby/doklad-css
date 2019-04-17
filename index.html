@@ -7,11 +7,7 @@
     <link rel="stylesheet" href="shower/themes/material/styles/styles.css">
     <style>
         .shower {
-            --slide-ratio: calc(16 / 9);
-            font: 22px/1.8 'Roboto', sans-serif;
-        }
-        .slide pre code {
-            line-height: 1.6;
+            --slide-ratio: calc(4 / 3);
         }
     </style>
 </head>
@@ -26,118 +22,167 @@
 
     <section class="slide">
         <h2>CSS. Практика</h2>
-        <p>Доклад про CSS</p>
-        <p><a href="https://bnd.by/">Бондаренко Юрий</a></p>
+        <p>Как пересесть с препроцессоров обратно на CSS.</p>
+        <p><a href="https://bnd.by/">Бондаренко Юрий</a> (BWeb.Studio)</p>
     </section>
 
 
     <section class="slide">
-        <h2>CSS. Теория</h2>
-        <p>Вадим Макеев и его доклад "Мой ванильный CSS"</p>
+        <h2>Постановка задачи</h2>
+        <p>Почему мы используем препроцессоры:</p>
+        <ul>
+            <li>CSS местами <b>неудобен</b></li>
+            <li><b>Ограничен</b>ные возможности</li>
+            <li><b>Не язык</b> программирования</li>
+        </ul>
+
+        <h2>Цель</h2>
+        <p>Вернуться на CSS, захватив с собой "преимущества" препроцессоров</p>
     </section>
 
 
     <section class="slide">
-        <h2>Кратко по понятиям</h2>
-        <ol>
-            <li>Чистый "ванильный" CSS</li>
-            <li>Препроцессоры CSS</li>
-            <li>Постпроцессоры</li>
-        </ol>
+        <h2 class="shout shrink">Квант<br />раздражения</h2>
     </section>
 
 
     <section class="slide">
-        <h2>Чистый CSS</h2>
+        <h2>Вычисляемые выражения</h2>
         <div class="columns two">
             <div>
-                <h3 style="color:green;">Достоинства</h3>
-                <ol>
-                    <li>Стандарт</li>
-                </ol>
+                <h3>LESS</h3>
+                <pre style="font-size: 90%;">
+                    <code>a {</code>
+                    <code>  font: <mark class="important">12pt/10pt sans-serif</mark> ;</code>
+                    <code>}</code>
+                    <code>.item-c {</code>
+                    <code>  grid-column: <mark class="important">3 / span 2</mark> ;</code>
+                    <code>  grid-row: <mark class="important">span 3 / 6</mark> ;</code>
+                    <code>}</code>
+                </pre>
             </div>
-            <div>
-                <h3 style="color:red;">Недостатки</h3>
-                <ol>
-                    <li>Функции</li>
-                    <li>Переменные</li>
-                </ol>
+            <div class="next">
+                <h3>CSS</h3>
+                <pre style="font-size: 90%;">
+                    <code>a {</code>
+                    <code>  font: <b>12pt/10pt sans-serif</b>;</code>
+                    <code>}</code>
+                    <code>.item-c {</code>
+                    <code>  grid-column: <b>3 span 2</b>;</code>
+                    <code>  grid-row: <b>span 0.5</b>;</code>
+                    <code>}</code>
+                </pre>
             </div>
         </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Экранирование функций</h2>
+        <div class="columns two">
+            <div>
+                <h3>LESS</h3>
+                <pre style="font-size: 90%;">
+                    <code>div {</code>
+                    <code>  width: calc(50% - 100px);</code>
+                    <code>  height: ~"calc(50% - 100px)"</code>
+                    <code>}</code>
+                </pre>
+            </div>
+            <div class="next">
+                <h3>CSS</h3>
+                <pre style="font-size: 90%;">
+                    <code>div {</code>
+                    <code>  width: calc(-50%);</code>
+                    <code>  height: calc(50% - 100px);</code>
+                    <code>}</code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>gulp-less</h2>
+        <p>Пакет gulp-less не работает с Gulp 4, только 3.9.1</p>
+        <p>Невозможность обновиться на более новые версии</p>
+        <p>Раздражающие сообщения об уязвимостях и аудите</p>
+    </section>
+
+
+    <section class="slide">
+        <h2 class="shout shrink">Основные<br />понятия</h2>
     </section>
 
 
     <section class="slide">
         <h2>Препроцессоры</h2>
-        <p>SASS/SCSS, LESS, Stylus</p>
-        <div class="columns two">
+
+        <div class="columns three">
             <div>
-                <h3 style="color:green;">Достоинства</h3>
-                <ol>
-                    <li>Язык программирования</li>
-                </ol>
+                <img src="img/sass.svg" width="200" />
             </div>
             <div>
-                <h3 style="color:red;">Недостатки</h3>
-                <ol>
-                    <li>Новый синтаксис</li>
-                    <li>Компилируется</li>
-                </ol>
+                <img src="img/less.svg" width="200" />
+            </div>
+            <div>
+                <img src="img/stylus.svg" width="200" />
             </div>
         </div>
-    </section>
 
-
-    <section class="slide">
-        <h2>Постпроцессоры</h2>
-        <p>PostCss</p>
-        <div class="columns two">
+        <div class="columns three">
             <div>
-                <h3 style="color:green;">Достоинства</h3>
-                <ol>
-                    <li>Плагины</li>
-                </ol>
+                <h3>SASS</h3>
             </div>
             <div>
-                <h3 style="color:red;">Недостатки</h3>
-                <ol>
-                    <li>Настройки</li>
-                </ol>
+                <h3>LESS</h3>
+            </div>
+            <div>
+                <h3>Styles</h3>
             </div>
         </div>
-    </section>
 
-
-    <section class="slide">
-        <h2>Бестиарий</h2>
-        <p>Инструменты разработчика:</p>
         <ul>
-            <li>gulp - Таск менеджер</li>
-            <li>gulp-postcss - Постпроцессор</li>
-            <li>postcss-preset-env - набор плагинов для заданного окружения</li>
-            <li>postcss-import - пример "нестандартного" плагина</li>
-            <li>postcss-rtl - пример плагина-генератора кода</li>
+            <li>Расширяют язык стилей</li>
+            <li>Дополняют синтаксис элементами языков программирования: условия, циклы, переменные</li>
         </ul>
     </section>
 
 
     <section class="slide">
-        <h2>Бестиарий</h2>
-
-        <p>Полезное:</p>
+        <h2>Постпроцессор</h2>
+        <p><img src="img/postcss.svg"></p>
+        <p>PostCss:</p>
         <ul>
-            <li>stylelint - твой личный ревьювер стилей</li>
-            <li>gulp-sourcemap - карты исходного кода</li>
-            <li>gulp-csso - минификация стилей</li>
+            <li>Вендорные префиксы</li>
+            <li>Grid</li>
+            <li>генерация дополнительного кода</li>
         </ul>
     </section>
 
 
     <section class="slide">
-        <h2>Практика</h2>
-        <p>Разбираем кусок конфига</p>
-        <p>Практические кейсы</p>
+        <h2>Инструментарий</h2>
+        <ul>
+            <li><b>gulp 4</b> - Таск менеджер</li>
+            <li><b>gulp-postcss</b> - Постпроцессор</li>
+            <li><b>postcss-preset-env</b> - набор плагинов</li>
+            <li><b>postcss-import</b> - пример "нестандартного" плагина</li>
+            <li><b>postcss-rtl</b> - пример плагина-генератора кода</li>
+        </ul>
     </section>
+
+
+    <section class="slide">
+        <h2 class="shout shrink">Практика</h2>
+    </section>
+
+
+    <section>
+        <h2>gulpfile.js: Подключаем инструментарий</h2>
+        
+    </section>
+
 
     <section class="slide">
         <h2>Конфиг PostCSS</h2>
