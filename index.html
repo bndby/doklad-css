@@ -9,9 +9,46 @@
         .shower {
             --slide-ratio: calc(4 / 3);
         }
+
+        .slide::after {
+            right: 38px;
+            left: auto;
+        }
+
+        .slide .gulp {
+            color: white;
+            background-color: #cf4647;
+            font-weight: bold;
+        }
+
+        .slide code b {
+            color: darkmagenta;
+        }
+
+        .shower.full .next.border {
+            visibility: visible;
+        }
+
+        .shower.full .next.border.active {
+            outline: 0.3rem solid #cf4647;
+            outline-offset: 0.2rem;
+        }
     </style>
 </head>
 <body class="shower list">
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <header class="caption">
@@ -39,6 +76,19 @@
         <h2>Цель</h2>
         <p>Вернуться на CSS, захватив с собой "преимущества" препроцессоров</p>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <section class="slide">
@@ -110,6 +160,21 @@
     </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <section class="slide">
         <h2 class="shout shrink">Основные<br />понятия</h2>
     </section>
@@ -173,78 +238,292 @@
     </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <section class="slide">
-        <h2 class="shout shrink">Практика</h2>
+        <h2 class="shout shrink">Подготовка</h2>
     </section>
 
 
-    <section>
-        <h2>gulpfile.js: Подключаем инструментарий</h2>
+    <section class="slide">
+        <h2>Подключаем инструментарий</h2>
+
+        <p><code class="gulp">gulpfile.js</code></p>
+
+        <pre>
+            <code>const { <b>task</b>, <b>src</b>, <b>dest</b> } = require( 'gulp' )</code>
+            <code>const <b>postcss</b> = require( 'gulp-postcss' )</code>
+            <code>const <b>postcssPresetEnv</b> = require( 'postcss-preset-env' )</code>
+            <code>const <b>atImport</b> = require( 'postcss-import' )</code>
+        </pre>
+    </section>
+
+
+    <section class="slide">
+        <h2>Конфиг PostCSS</h2>
+
+        <p><code class="gulp">gulpfile.js</code></p>
+
+        <pre>
+            <code>const <span class="next border">postcssOptions</span> = [</code>
+            <code>  <span class="next border">atImport()</span>,</code>
+            <code>  <span class="next border">postcssPresetEnv</span>({</code>
+            <code>    stage: 0,</code>
+            <code>    autoprefixer: {</code>
+            <code>      grid: true,</code>
+            <code>      browsers: [ 'last 2 versions', 'ie &gt;= 11' ]</code>
+            <code>    }</code>
+            <code>  })</code>
+            <code>]</code>
+        </pre>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="slide">
+        <h2 class="shout shrink">1.<br />Хочу верстать<br /> и не страдать</h2>
+    </section>
+
+
+    <section class="slide">
+        <h2>1. Grid Layout <span style="color: red">❤︎</span> IE10+</h2>
         
+        <div class="columns two">
+            <div>
+                <p>Исходный CSS</p>
+
+                <pre style="font-size: 70%">
+                    <code>.layout {</code>
+                    <code>  <b>display</b>: grid;</code>
+                    <code>  <b>grid-template-areas</b>:</code>
+                    <code>    "item1 item1 item2"</code>
+                    <code>    "item3 item4 item4";</code>
+                    <code>  <b>grid-template-columns</b>: 1fr 1fr 1fr;</code>
+                    <code>  <b>grid-template-rows</b>: auto auto;</code>
+                    <code>  <b>grid-gap</b>: 20px;</code>
+                    <code>}</code>
+                </pre>
+            </div>
+            <div>
+                <p>Обработанный CSS</p>
+
+                <pre style="font-size: 70%">
+                    <code>.layout {</code>
+                    <code>  <u>display</u>: -ms-grid;</code>
+                    <code>  <b>display</b>: grid;</code>
+                    <code>  <b>grid-template-areas</b>:</code>
+                    <code>    "item1 item1 item2"</code>
+                    <code>    "item3 item4 item4";</code>
+                    <code>  <u>-ms-grid-columns</u>: 1fr 20px 1fr 20px 1fr;</code>
+                    <code>  <b>grid-template-columns</b>: 1fr 1fr 1fr;</code>
+                    <code>  <u>-ms-grid-rows</u>: auto 20px auto;</code>
+                    <code>  <b>grid-template-rows</b>: auto auto;</code>
+                    <code>  <b>grid-gap</b>: 20px;</code>
+                    <code>}</code>
+                </pre>
+            </div>
+        </div>
     </section>
 
 
     <section class="slide">
-        <h2>Конфиг PostCSS</h2>
-        <pre><code>
-const postcssPresetEnv = require( 'postcss-preset-env' )
-const browsers = [ 'last 2 versions', 'ie >= 11', 'iOS >= 9' ]
-</code></pre>
-    </section>
-
-
-    <section class="slide">
-        <h2>Конфиг PostCSS</h2>
-        <pre><code>
-const postcssOptions = [
-    atImport(), postcssPresetEnv({
-        stage: 0,
-        autoprefixer: {
-            grid: true, browsers: browsers
-        }
-    })
-]
-        </code></pre>
-    </section>
-
-
-    <section class="slide">
-        <h2>Методики организации CSS. БЕМ</h2>
+        <h2>1. Grid Layout <span style="color: red">❤︎</span> IE10+</h2>
+        
+        <p>Что пока нельзя использовать:</p>
         <ul>
-            <li>Блок</li>
-            <li>Элемент</li>
-            <li>Модификатор</li>
+            <li><code>grid-auto-columns</code></li>
+            <li><code>grid-auto-rows</code></li>
+            <li><code>grid-auto-flow</code></li>
         </ul>
-    </section>
 
-
-    <section class="slide">
-        <h2>Grid IE 10+</h2>
-        <p><a href="https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/">css-tricks.com</a></p>
-    </section>
-
-
-    <section class="slide">
-        <h2>Flex и dir=rtl</h2>
+        <p>Ограничения:</p>
+        <ul>
+            <li>Каждый элемент сетки должен иметь уникальное имя</li>
+            <li>Для использования <code>grid-gap</code> свойства <code>grid-template-areas</code> и <code>grid-template-columns</code> должны быть определены.</li>
+        </ul>
 
     </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <section class="slide">
-        <h2>Склейка локальных импортов</h2>
+        <h2 class="shout shrink">2.<br />Мама, я в Дубае</h2>
+    </section>
+
+
+    <section class="slide">
+        <h2>2. RTL</h2>
+
+        <p>Для гридов и флексов RTL <b>не нужен</b>!</p>
+
+        <p>Подключаем плагин:</p>
+
+        <pre>
+            <code>const rtl = <b>require</b>( 'postcss-rtl' )</code>
+            <code><b>src</b>( 'style.css' )</code>
+            <code>  .<b>pipe</b>( <b>postcss</b>( [ <b>rtl</b>( options ) ]) )</code>
+            <code>  .<b>pipe</b>( <b>dest</b>( './dest' ) )</code>
+        </pre>
+
+    </section>
+
+
+    <section class="slide">
+        <h2>2. RTL</h2>
+
+        <div class="columns two">
+            <div>
+                <p>Исходный CSS</p>
+
+                <pre style="font-size: 70%">
+                    <code>.foo {</code>
+                    <code>  <b>float</b>: right;</code>
+                    <code>  <b>margin-left</b>: 13px;</code>
+                    <code>  <b>font-size</b>: 13px;</code>
+                    <code>}</code>
+                </pre>
+            </div>
+            <div>
+                <p>Обработанный CSS</p>
+
+                <pre style="font-size: 70%">
+                    <code>.foo {</code>
+                    <code>  <b>font-size</b>: 13px;</code>
+                    <code>}</code>
+                    <code>[dir="ltr"] .foo {</code>
+                    <code>  <b>float</b>: right;</code>
+                    <code>  <b>margin-left</b>: 13px;</code>
+                    <code>}</code>
+                    <code>[dir="rtl"] .foo {</code>
+                    <code>  <b>float</b>: left;</code>
+                    <code>  <b>margin-right</b>: 13px;</code>
+                    <code>}</code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="slide">
+        <h2 class="shout shrink">3.<br />Мне бы в<br /><b>HTTP/1.1</b></h2>
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2>3. Модульность и объединение</h2>
+
+        <p>Этот плагин должен быть первым в вашем списке плагинов!</p>
+
+        <p>Подключаем плагин:</p>
         
-        <pre><code>
-const atImport = require( 'postcss-import' )
-const postcssOptions = [
-    atImport(),
-    ...
-]
-        </code></pre>
+        <pre>
+            <code>const <b>atImport</b> = require( 'postcss-import' )</code>
+        </pre>
+
     </section>
 
 
     <section class="slide">
-        <h2>Custom properties</h2>
+        <h2>3. Модульность и объединение</h2>
+
+        <pre>
+            <code>@import url('vars.css');</code>
+            <code>@import url('common.css');</code>
+            <code>@import url('node_modules/swiper/dist/css/swiper.min.css');</code>
+            <code>@import url('https://fonts.googleapis.com/css?family=Roboto');</code>
+        </pre>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="slide">
+        <h2 class="shout shrink">4.<br />Не переменные,<br />а <b>Custom Properties</b></h2>
+    </section>
+
+
+    <section class="slide">
+        <h2>4. Custom properties</h2>
         <pre><code>
 :root {
     --mainColor: red;
@@ -258,7 +537,7 @@ a {
 
 
     <section class="slide">
-        <h2>Custom properties</h2>
+        <h2>4. Custom properties</h2>
         <pre><code>
 :root {
     --danger-theme: {
@@ -274,8 +553,23 @@ a {
     </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <section class="slide">
-        <h2>Вложенные селекторы</h2>
+        <h2>5. Вложенные селекторы</h2>
         <pre><code>
 a {
     & span { color: white; }
@@ -288,8 +582,23 @@ a {
     </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <section class="slide">
-        <h2>Media queries</h2>
+        <h2>6. Media queries</h2>
         <pre><code>
 @custom-media --phone (max-width: 480px);
 
@@ -301,7 +610,7 @@ a {
 
 
     <section class="slide">
-        <h2>Media queries</h2>
+        <h2>6. Media queries</h2>
         <pre><code>
 @media (width >= 768px) and (width <= 1200px) {
     /* планшет */
@@ -313,6 +622,38 @@ a {
     /* планшет */
 }
         </code></pre>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="slide">
+        <h2>Ссылки</h2>
+        <ul>
+            <li><a href="https://bit.ly/2q6cb1F">https://bit.ly/2q6cb1F</a> &mdash; CSS Grid in IE: CSS Grid and the New Autoprefixer</li>
+        </ul>
+    </section>
+
+
+    <section class="slide">
+        <h2>Песочницы</h2>
+
+        <ul>
+            <li><a href="https://autoprefixer.github.io/">https://autoprefixer.github.io/</a> &mdash; Autoprefixer</li>
+        </ul>
     </section>
 
 
