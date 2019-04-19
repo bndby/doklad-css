@@ -518,41 +518,60 @@
 
 
     <section class="slide">
-        <h2 class="shout shrink">4.<br />Не переменные,<br />а <b>Custom Properties</b></h2>
+        <h2 class="shout shrink">4.<br /><span style="font-size: 85%;">Не переменные,<br />а <b>Custom Properties</b></span></h2>
     </section>
 
 
     <section class="slide">
         <h2>4. Custom properties</h2>
-        <pre><code>
-:root {
-    --mainColor: red;
-}
+        
+        <div class="columns two">
+            <div>
+                <p>Исходный CSS</p>
 
-a {
-    color: var(--mainColor);
-}
-        </code></pre>
+                <pre style="font-size: 70%">
+                    <code>:root {</code>
+                    <code>  <b>--fontSize</b>: 1rem;</code>
+                    <code>  <b>--mainColor</b>: #12345678;</code>
+                    <code>}</code>
+                    <code>body {</code>
+                    <code>  <b>color</b>: var(--mainColor);</code>
+                    <code>  <b>font-size</b>: var(--fontSize);</code>
+                    <code>}</code>
+                </pre>
+            </div>
+            <div>
+                <p>Обработанный CSS</p>
+
+                <pre style="font-size: 70%">
+                    <code>:root {</code>
+                    <code>  <b>--fontSize</b>: 1rem;</code>
+                    <code>  <b>--mainColor</b>: rgba(18,52,86,0.47059);</code>
+                    <code>}</code>
+                    <code>body {</code>
+                    <code>  <b>color</b>: rgba(18,52,86,0.47059);</code>
+                    <code>  <b>color</b>: var(--mainColor);</code>
+                    <code>  <b>font-size</b>: 1rem;</code>
+                    <code>  <b>font-size</b>: var(--fontSize);</code>
+                    <code>}</code>
+                </pre>
+            </div>
+        </div>
+
     </section>
 
 
     <section class="slide">
         <h2>4. Custom properties</h2>
-        <pre><code>
-:root {
-    --danger-theme: {
-        color: white;
-        background-color: red;
-    }
-}
+        
+        <p>Ограничения:</p>
 
-.danger {
-    @apply --danger-theme;
-}
-        </code></pre>
+        <ul>
+            <li>Custom properties только в <code>:root</code>, иначе не будет обратной совместимости</li>
+            <li>Custom properties в <code>@media</code> тоже без обратной совместимости</li>
+        </ul>
+
     </section>
-
-
 
 
 
@@ -653,6 +672,7 @@ a {
 
         <ul>
             <li><a href="https://autoprefixer.github.io/">https://autoprefixer.github.io/</a> &mdash; Autoprefixer</li>
+            <li><a href="https://preset-env.cssdb.org/playground">https://preset-env.cssdb.org/playground</a> &mdash; PostCSS Preset Env</li>
         </ul>
     </section>
 
