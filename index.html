@@ -401,7 +401,7 @@
 
 
     <section class="slide">
-        <h2>2. RTL</h2>
+        <h2>2. RTL: Генерация кода</h2>
 
         <p>Для гридов и флексов RTL <b>не нужен</b>!</p>
 
@@ -418,7 +418,7 @@
 
 
     <section class="slide">
-        <h2>2. RTL</h2>
+        <h2>2. RTL: Генерация кода</h2>
 
         <div class="columns two">
             <div>
@@ -453,6 +453,36 @@
     </section>
 
 
+    <section class="slide">
+        <h2>2. RTL: Псевдокласс <code>dir</code></h2>
+
+        <div class="columns two">
+            <div>
+                <p>Исходный CSS</p>
+
+                <pre style="font-size: 70%">
+                    <code>blockquote:dir(rtl) {</code>
+                    <code>  margin-right: 10px;</code>
+                    <code>}</code>
+                    <code>blockquote:dir(ltr) {</code>
+                    <code>  margin-left: 10px;</code>
+                    <code>}</code>
+                </pre>
+            </div>
+            <div class="next">
+                <p>Обработанный CSS</p>
+
+                <pre style="font-size: 70%">
+                    <code>[dir="rtl"] blockquote {</code>
+                    <code>  margin-right: 10px;</code>
+                    <code>}</code>
+                    <code>[dir="ltr"] blockquote {</code>
+                    <code>  margin-left: 10px;</code>
+                    <code>}</code>
+                </pre>
+            </div>
+        </div>
+    </section>
 
 
 
