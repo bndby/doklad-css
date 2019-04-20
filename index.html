@@ -58,9 +58,10 @@
 
 
     <section class="slide">
-        <h2>CSS. Практика</h2>
-        <p>Как пересесть с препроцессоров обратно на CSS.</p>
-        <p><a href="https://bnd.by/">Бондаренко Юрий</a> (BWeb.Studio)</p>
+        <h2 align="center">CSS. Практика</h2>
+        <h2 align="center" style="line-height: 2;"><br /><b>Как пересесть с препроцессоров<br />обратно на CSS.</b></h2>
+        
+        <p class="place bottom"><a href="https://bnd.by/">Бондаренко Юрий</a> (BWeb.Studio)</p>
     </section>
 
 
@@ -203,7 +204,7 @@
                 <h3>LESS</h3>
             </div>
             <div>
-                <h3>Styles</h3>
+                <h3>Stylus</h3>
             </div>
         </div>
 
@@ -227,13 +228,13 @@
 
 
     <section class="slide">
-        <h2>Инструментарий</h2>
+        <h2>Инструментарий:</h2>
         <ul>
-            <li><b>gulp 4</b> - Таск менеджер</li>
-            <li><b>gulp-postcss</b> - Постпроцессор</li>
-            <li><b>postcss-preset-env</b> - набор плагинов</li>
-            <li><b>postcss-import</b> - пример "нестандартного" плагина</li>
-            <li><b>postcss-rtl</b> - пример плагина-генератора кода</li>
+            <li class="next"><b>gulp 4</b> - Таск менеджер</li>
+            <li class="next"><b>gulp-postcss</b> - Постпроцессор</li>
+            <li class="next"><b>postcss-preset-env</b> - набор плагинов</li>
+            <li class="next"><b>postcss-import</b> - пример "нестандартного" плагина</li>
+            <li class="next"><b>postcss-rtl</b> - пример плагина-генератора кода</li>
         </ul>
     </section>
 
@@ -336,7 +337,7 @@
                     <code>}</code>
                 </pre>
             </div>
-            <div>
+            <div class="next">
                 <p>Обработанный CSS</p>
 
                 <pre style="font-size: 70%">
@@ -431,7 +432,7 @@
                     <code>}</code>
                 </pre>
             </div>
-            <div>
+            <div class="next">
                 <p>Обработанный CSS</p>
 
                 <pre style="font-size: 70%">
@@ -540,7 +541,7 @@
                     <code>}</code>
                 </pre>
             </div>
-            <div>
+            <div class="next">
                 <p>Обработанный CSS</p>
 
                 <pre style="font-size: 70%">
@@ -567,13 +568,14 @@
         <p>Ограничения:</p>
 
         <ul>
-            <li>Custom properties только в <code>:root</code>, иначе не будет обратной совместимости</li>
-            <li>Custom properties в <code>@media</code> тоже без обратной совместимости</li>
+            <li class="next">Custom properties только в <code>:root</code>, иначе не будет обратной совместимости</li>
+            <li class="next">Custom properties в <code>@media</code> тоже без обратной совместимости</li>
         </ul>
 
     </section>
 
 
+    
 
 
 
@@ -582,22 +584,80 @@
 
 
 
-
-
-
+    <section class="slide">
+        <h2 class="shout shrink">5.<br />We need<br />to go deeper</h2>
+    </section>
 
 
     <section class="slide">
         <h2>5. Вложенные селекторы</h2>
-        <pre><code>
-a {
-    & span { color: white; }
 
-    @nest span & { color: blue; }
+        <div class="columns two">
+            <div>
+                <p>Исходный CSS</p>
 
-    @media (min-width: 30em) { color: yellow; }
-}
-        </code></pre>
+                <pre style="font-size: 80%">
+                    <code>a {</code>
+                    <code>  <b>color</b>: white;</code>
+                    <code>  & span { <b>color</b>: green; }</code>
+                    <code>  @nest span & { <b>color</b>: blue; }</code>
+                    <div class="next border">
+                    <code>  @media (min-width: 30em) {</code>
+                    <code>    <b>color</b>: yellow;</code>
+                    <code>  }</code>
+                    </div>
+                    <code>  &:hover {</code>
+                    <code>    <b>color</b>: red;</code>
+                    <code>  }</code>
+                    <code>}</code>
+                </pre>
+            </div>
+            <div class="next">
+                <p>Обработанный CSS</p>
+
+                <pre style="font-size: 80%">
+                    <code>a { <b>color</b>: white; }</code>
+                    <code>a span { <b>color</b>: green; }</code>
+                    <code>span a { <b>color</b>: blue; }</code>
+                    <code>@media (min-width: 30em) {</code>
+                    <code>  a { <b>color</b>: yellow; }</code>
+                    <code>}</code>
+                    <code>a:hover { <b>color</b>: red; }</code>
+                </pre>
+            </div>
+        </div>
+        
+    </section>
+
+
+    <section class="slide">
+        <h2>5. Вложенные селекторы</h2>
+
+        <p>Ограничения</p>
+
+        <div class="columns two">
+            <div>
+                <p>Исходный CSS</p>
+
+                <pre style="font-size: 80%">
+                    <code>.block {</code>
+                    <code>  <b>color</b>: white;</code>
+                    <code><span class="next border">  &__element { <b>color</b>: green; }</span></code>
+                    <code>}</code>
+                </pre>
+            </div>
+            <div class="next">
+                <p>Обработанный CSS</p>
+
+                <pre style="font-size: 80%">
+                    <code>.block {</code>
+                    <code>  <b>color</b>: white;</code>
+                    <code>  &__element { <b>color</b>: green; }</code>
+                    <code>}</code>
+                </pre>
+            </div>
+        </div>
+
     </section>
 
 
@@ -605,43 +665,74 @@ a {
 
 
 
+    
 
 
 
 
 
+    <section class="slide">
+        <h2 class="shout shrink">6.<br />Media queries</h2>
+    </section>
 
 
+    <section class="slide">
+        <h2>6. Custom media queries</h2>
+        
+        <div class="columns two">
+            <div>
+                <p>Исходный CSS</p>
 
+                <pre style="font-size: 80%">
+                    <code>@custom-media --s (max-width: 480px);</code>
+                    <code>@media (--s) {</code>
+                    <code class="comment">  /* стили для телефона */</code>
+                    <code>  <b>width</b>: 100%</code>
+                    <code>}</code>
+                </pre>
+            </div>
+            <div class="next">
+                <p>Обработанный CSS</p>
 
+                <pre style="font-size: 80%">
+                    <code>@media (max-width: 480px) {</code>
+                    <code class="comment">  /* стили для телефона */</code>
+                    <code>  <b>width</b>: 100%;</code>
+                    <code>}</code>
+                </pre>
+            </div>
+        </div>
+
+    </section>
 
 
     <section class="slide">
         <h2>6. Media queries</h2>
-        <pre><code>
-@custom-media --phone (max-width: 480px);
 
-@media (--phone) {
-    /* стили для телефона */
-}
-        </code></pre>
+        <div>
+            <p>Исходный CSS</p>
+        
+            <pre style="font-size: 80%">
+                <code>@custom-media <b>--only-tablet</b> (<u>width</u> >= 768px) and (<u>width</u> < 1200px);</code>
+                <code>@media (<b>--only-tablet</b>) {</code>
+                <code class="comment">  /* планшет */</code>
+                <code>}</code>
+            </pre>
+        </div>
+
+        <div class="next">
+            <p>Обработанный CSS</p>
+
+            <pre style="font-size: 80%">
+                <code>@media (<u>min-width</u>: 768px) and (<u>max-width</u>: 1199px) {</code>
+                <code class="comment">  /* планшет */</code>
+                <code>}</code>
+            </pre>
+        </div>
+
     </section>
 
 
-    <section class="slide">
-        <h2>6. Media queries</h2>
-        <pre><code>
-@media (width >= 768px) and (width <= 1200px) {
-    /* планшет */
-}
-
-@custom-media --only-tablet (width >= 768px) and (width <= 1200px);
-
-@media (--only-tablet) {
-    /* планшет */
-}
-        </code></pre>
-    </section>
 
 
 
@@ -658,13 +749,6 @@ a {
 
 
 
-
-    <section class="slide">
-        <h2>Ссылки</h2>
-        <ul>
-            <li><a href="https://bit.ly/2q6cb1F">https://bit.ly/2q6cb1F</a> &mdash; CSS Grid in IE: CSS Grid and the New Autoprefixer</li>
-        </ul>
-    </section>
 
 
     <section class="slide">
@@ -675,6 +759,29 @@ a {
             <li><a href="https://preset-env.cssdb.org/playground">https://preset-env.cssdb.org/playground</a> &mdash; PostCSS Preset Env</li>
         </ul>
     </section>
+
+
+
+
+
+
+    <section class="slide">
+        <h2 class="shout shrink">Конец</h2>
+    </section>
+
+
+    <section class="slide">
+        <h2 align="center">CSS. Практика</h2>
+
+        <h2 align="center">Бондаренко Юрий / <a href="https://bnd.by/">bnd.by</a></h2>
+        <h2>&nbsp;</h2>
+        <h2 align="center">Вопросы?</h2>
+
+    </section>
+
+
+
+
 
 
     <div class="progress"></div>
