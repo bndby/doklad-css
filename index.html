@@ -66,12 +66,12 @@
 
 
     <section class="slide">
-        <h2>Постановка задачи</h2>
+        <h2>Цель</h2>
+
         <p>Почему мы используем препроцессоры:</p>
         <ul>
-            <li>CSS местами <b>неудобен</b></li>
-            <li><b>Ограничен</b>ные возможности</li>
-            <li><b>Не язык</b> программирования</li>
+            <li>Это удобно</li>
+            <li>Элементы ЯП</li>
         </ul>
 
         <h2>Цель</h2>
@@ -104,11 +104,11 @@
                 <h3>LESS</h3>
                 <pre style="font-size: 90%;">
                     <code>a {</code>
-                    <code>  font: <mark class="important">12pt/10pt sans-serif</mark> ;</code>
+                    <code>  font: <b>12pt/10pt sans-serif</b> ;</code>
                     <code>}</code>
                     <code>.item-c {</code>
-                    <code>  grid-column: <mark class="important">3 / span 2</mark> ;</code>
-                    <code>  grid-row: <mark class="important">span 3 / 6</mark> ;</code>
+                    <code>  grid-column: <b>3 / span 2</b> ;</code>
+                    <code>  grid-row: <b>span 3 / 6</b> ;</code>
                     <code>}</code>
                 </pre>
             </div>
@@ -135,8 +135,8 @@
                 <h3>LESS</h3>
                 <pre style="font-size: 90%;">
                     <code>div {</code>
-                    <code>  width: calc(50% - 100px);</code>
-                    <code>  height: ~"calc(50% - 100px)"</code>
+                    <code>  width: <b>calc(50% - 100px)</b>;</code>
+                    <code>  height: <b>~"calc(50% - 100px)"</b>;</code>
                     <code>}</code>
                 </pre>
             </div>
@@ -144,8 +144,8 @@
                 <h3>CSS</h3>
                 <pre style="font-size: 90%;">
                     <code>div {</code>
-                    <code>  width: calc(-50%);</code>
-                    <code>  height: calc(50% - 100px);</code>
+                    <code>  width: <b>calc(-50%)</b>;</code>
+                    <code>  height: <b>calc(50% - 100px)</b>;</code>
                     <code>}</code>
                 </pre>
             </div>
@@ -154,8 +154,8 @@
 
 
     <section class="slide">
-        <h2>gulp-less</h2>
-        <p>Пакет gulp-less не работает с Gulp 4, только 3.9.1</p>
+        <h2>Проблемы с инструментарием</h2>
+        <p>Пакет <code>gulp-less</code> не работает с Gulp 4, только 3.9.1</p>
         <p>Невозможность обновиться на более новые версии</p>
         <p>Раздражающие сообщения об уязвимостях и аудите</p>
     </section>
@@ -182,7 +182,9 @@
 
 
     <section class="slide">
-        <h2>Препроцессоры</h2>
+        <h2>Препроцессор</h2>
+
+        <p>Свой язык, на выходе CSS</p>
 
         <div class="columns three">
             <div>
@@ -209,32 +211,38 @@
         </div>
 
         <ul>
-            <li>Расширяют язык стилей</li>
-            <li>Дополняют синтаксис элементами языков программирования: условия, циклы, переменные</li>
+            <li>Расширяют язык стилей: примеси, вложенные правила</li>
+            <li>Дополняют элементами языков программирования: условия, циклы, переменные</li>
         </ul>
     </section>
 
 
     <section class="slide">
         <h2>Постпроцессор</h2>
+
+        <p>На входе CSS, на выходе CSS</p>
+
         <p><img src="img/postcss.svg"></p>
         <p>PostCss:</p>
         <ul>
             <li>Вендорные префиксы</li>
-            <li>Grid</li>
-            <li>генерация дополнительного кода</li>
+            <li>Поддержка современных и будущих стандартов</li>
+            <li>Генерация дополнительного кода</li>
         </ul>
     </section>
 
 
     <section class="slide">
-        <h2>Инструментарий:</h2>
+        <h2>Инструментарий</h2>
+
+        <p>В примерах использованы:</p>
+
         <ul>
-            <li class="next"><b>gulp 4</b> - Таск менеджер</li>
-            <li class="next"><b>gulp-postcss</b> - Постпроцессор</li>
-            <li class="next"><b>postcss-preset-env</b> - набор плагинов</li>
-            <li class="next"><b>postcss-import</b> - пример "нестандартного" плагина</li>
-            <li class="next"><b>postcss-rtl</b> - пример плагина-генератора кода</li>
+            <li><code>gulp 4</code> &mdash; Таск менеджер</li>
+            <li><code>gulp-postcss</code> &mdash; Постпроцессор</li>
+            <li><code>postcss-preset-env</code> &mdash; набор плагинов</li>
+            <li><code>postcss-import</code> &mdash; пример "нестандартного" плагина</li>
+            <li><code>postcss-rtl</code> &mdash; пример плагина-генератора кода</li>
         </ul>
     </section>
 
@@ -280,9 +288,9 @@
         <p><code class="gulp">gulpfile.js</code></p>
 
         <pre>
-            <code>const <span class="next border">postcssOptions</span> = [</code>
-            <code>  <span class="next border">atImport()</span>,</code>
-            <code>  <span class="next border">postcssPresetEnv</span>({</code>
+            <code>const postcssOptions = [</code>
+            <code>  <b>atImport()</b>,</code>
+            <code>  <b>postcssPresetEnv</b>({</code>
             <code>    stage: 0,</code>
             <code>    autoprefixer: {</code>
             <code>      grid: true,</code>
@@ -371,7 +379,7 @@
 
         <p>Ограничения:</p>
         <ul>
-            <li>Каждый элемент сетки должен иметь уникальное имя</li>
+            <li>Каждый grid-элемент сетки должен иметь уникальное имя</li>
             <li>Для использования <code>grid-gap</code> свойства <code>grid-template-areas</code> и <code>grid-template-columns</code> должны быть определены.</li>
         </ul>
 
@@ -462,10 +470,10 @@
 
                 <pre style="font-size: 70%">
                     <code>blockquote:dir(rtl) {</code>
-                    <code>  margin-right: 10px;</code>
+                    <code>  <b>margin-right</b>: 10px;</code>
                     <code>}</code>
                     <code>blockquote:dir(ltr) {</code>
-                    <code>  margin-left: 10px;</code>
+                    <code>  <b>margin-left</b>: 10px;</code>
                     <code>}</code>
                 </pre>
             </div>
@@ -474,10 +482,10 @@
 
                 <pre style="font-size: 70%">
                     <code>[dir="rtl"] blockquote {</code>
-                    <code>  margin-right: 10px;</code>
+                    <code>  <b>margin-right</b>: 10px;</code>
                     <code>}</code>
                     <code>[dir="ltr"] blockquote {</code>
-                    <code>  margin-left: 10px;</code>
+                    <code>  <b>margin-left</b>: 10px;</code>
                     <code>}</code>
                 </pre>
             </div>
@@ -805,6 +813,7 @@
 
         <h2 align="center">Бондаренко Юрий / <a href="https://bnd.by/">bnd.by</a></h2>
         <h2>&nbsp;</h2>
+        
         <h2 align="center">Вопросы?</h2>
 
     </section>
