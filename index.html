@@ -21,6 +21,12 @@
             font-weight: bold;
         }
 
+        .slide .css {
+            color: white;
+            background-color: #9952c8;
+            font-weight: bold;
+        }
+
         .slide code b {
             color: darkmagenta;
         }
@@ -269,7 +275,7 @@
 
 
     <section class="slide">
-        <h2>Подключаем инструментарий</h2>
+        <h2>Подключаем</h2>
 
         <p><code class="gulp">gulpfile.js</code></p>
 
@@ -283,7 +289,7 @@
 
 
     <section class="slide">
-        <h2>Конфиг PostCSS</h2>
+        <h2>Настраиваем</h2>
 
         <p><code class="gulp">gulpfile.js</code></p>
 
@@ -302,7 +308,20 @@
     </section>
 
 
-
+    <section class="slide">
+            <h2>Запускаем</h2>
+    
+            <p><code class="gulp">gulpfile.js</code></p>
+    
+            <pre>
+                <code>const css = () =&gt; {</code>
+                <code>  return <b>src</b>( './src/assets/css/*.css' )</code>
+                <code>    .pipe( <b>postcss</b>( postcssOptions ) )</code>
+                <code>    .pipe( <b>dest</b>( './dest/assets/css' ) )</code>
+                <code>}</code>
+                <code>task( 'CSS', css )</code>
+            </pre>
+        </section>
 
 
 
@@ -795,6 +814,20 @@
         <ul>
             <li><a href="https://autoprefixer.github.io/">https://autoprefixer.github.io/</a> &mdash; Autoprefixer</li>
             <li><a href="https://preset-env.cssdb.org/playground">https://preset-env.cssdb.org/playground</a> &mdash; PostCSS Preset Env</li>
+        </ul>
+    </section>
+
+
+
+
+
+
+    <section class="slide">
+        <h2>Ссылки</h2>
+
+        <ul>
+            <li><a href="https://youtu.be/CaDnbOjXjRg">https://youtu.be/CaDnbOjXjRg</a> &mdash; Вадим Макеев, Мой ванильный CSS</li>
+            <li><a href="https://youtu.be/g20pCKeSgUU">https://youtu.be/g20pCKeSgUU</a> &mdash; Вероника Новикова, CSS ещё не торт</li>
         </ul>
     </section>
 
