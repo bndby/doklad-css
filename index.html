@@ -66,6 +66,8 @@
     <section class="slide">
         <h2 align="center">CSS. Практика</h2>
         <h2 align="center" style="line-height: 2;"><br /><b>Как пересесть с препроцессоров<br />обратно на CSS.</b></h2>
+
+        <h2 align="center" style="line-height: 2;">MiniQ #14, 25.04.2019</h2>
         
         <p class="place bottom"><a href="https://bnd.by/">Бондаренко Юрий</a> (BWeb.Studio)</p>
     </section>
@@ -76,7 +78,13 @@
 
         <p>Вернуться на CSS, захватив с собой "преимущества" препроцессоров</p>
 
-        <p>Почему мы используем препроцессоры:</p>
+        <p>Почему CSS:</p>
+        <ul>
+            <li>Стандарт</li>
+            <li>Активно развивается</li>
+        </ul>
+
+        <p>Почему препроцессоры:</p>
         <ul>
             <li>Это удобно</li>
             <li>Элементы ЯП</li>
@@ -161,9 +169,11 @@
 
     <section class="slide">
         <h2>Проблемы с инструментарием</h2>
-        <p>Пакет <code>gulp-less</code> не работает с Gulp 4, только 3.9.1</p>
-        <p>Невозможность обновиться на более новые версии</p>
-        <p>Раздражающие сообщения об уязвимостях и аудите</p>
+        <div style="font-size: 120%">
+            <p>Пакет <code>gulp-less</code> не работает с Gulp 4, только 3.9.1</p>
+            <p>Невозможность обновиться на более новые версии</p>
+            <p>Раздражающие сообщения об уязвимостях и аудите</p>
+        </div>
     </section>
 
 
@@ -229,7 +239,7 @@
         <p>На входе CSS, на выходе CSS</p>
 
         <p><img src="img/postcss.svg"></p>
-        <p>PostCss:</p>
+        <h3>PostCSS</h3>
         <ul>
             <li>Вендорные префиксы</li>
             <li>Поддержка современных и будущих стандартов</li>
@@ -243,7 +253,7 @@
 
         <p>В примерах использованы:</p>
 
-        <ul>
+        <ul style="font-size: 110%;">
             <li><code>gulp 4</code> &mdash; Таск менеджер</li>
             <li><code>gulp-postcss</code> &mdash; Постпроцессор</li>
             <li><code>postcss-preset-env</code> &mdash; набор плагинов</li>
@@ -347,42 +357,42 @@
 
     <section class="slide">
         <h2>1. Grid Layout <span style="color: red">❤︎</span> IE10+</h2>
-        
-        <div class="columns two">
-            <div>
-                <p>Исходный CSS</p>
 
-                <pre style="font-size: 70%">
-                    <code>.layout {</code>
-                    <code>  <b>display</b>: grid;</code>
-                    <code>  <b>grid-template-areas</b>:</code>
-                    <code>    "item1 item1 item2"</code>
-                    <code>    "item3 item4 item4";</code>
-                    <code>  <b>grid-template-columns</b>: 1fr 1fr 1fr;</code>
-                    <code>  <b>grid-template-rows</b>: auto auto;</code>
-                    <code>  <b>grid-gap</b>: 20px;</code>
-                    <code>}</code>
-                </pre>
-            </div>
-            <div class="next">
-                <p>Обработанный CSS</p>
+        <p>Исходный CSS</p>
 
-                <pre style="font-size: 70%">
-                    <code>.layout {</code>
-                    <code>  <u>display</u>: -ms-grid;</code>
-                    <code>  <b>display</b>: grid;</code>
-                    <code>  <b>grid-template-areas</b>:</code>
-                    <code>    "item1 item1 item2"</code>
-                    <code>    "item3 item4 item4";</code>
-                    <code>  <u>-ms-grid-columns</u>: 1fr 20px 1fr 20px 1fr;</code>
-                    <code>  <b>grid-template-columns</b>: 1fr 1fr 1fr;</code>
-                    <code>  <u>-ms-grid-rows</u>: auto 20px auto;</code>
-                    <code>  <b>grid-template-rows</b>: auto auto;</code>
-                    <code>  <b>grid-gap</b>: 20px;</code>
-                    <code>}</code>
-                </pre>
-            </div>
-        </div>
+        <pre>
+            <code>.layout {</code>
+            <code>  <b>display</b>: grid;</code>
+            <code>  <b>grid-template-areas</b>:</code>
+            <code>    "item1 item1 item2"</code>
+            <code>    "item3 item4 item4";</code>
+            <code>  <b>grid-template-columns</b>: 1fr 1fr 1fr;</code>
+            <code>  <b>grid-template-rows</b>: auto auto;</code>
+            <code>  <b>grid-gap</b>: 20px;</code>
+            <code>}</code>
+        </pre>
+
+    </section>
+
+
+    <section class="slide">
+        <h2>1. Grid Layout <span style="color: red">❤︎</span> IE10+</h2>
+
+        <pre>
+            <code>.layout {</code>
+            <code>  <u>display</u>: -ms-grid;</code>
+            <code>  <b>display</b>: grid;</code>
+            <code>  <b>grid-template-areas</b>:</code>
+            <code>    "item1 item1 item2"</code>
+            <code>    "item3 item4 item4";</code>
+            <code>  <u>-ms-grid-columns</u>: 1fr 20px 1fr 20px 1fr;</code>
+            <code>  <b>grid-template-columns</b>: 1fr 1fr 1fr;</code>
+            <code>  <u>-ms-grid-rows</u>: auto 20px auto;</code>
+            <code>  <b>grid-template-rows</b>: auto auto;</code>
+            <code>  <b>grid-gap</b>: 20px;</code>
+            <code>}</code>
+        </pre>
+
     </section>
 
 
@@ -451,7 +461,7 @@
             <div>
                 <p>Исходный CSS</p>
 
-                <pre style="font-size: 70%">
+                <pre>
                     <code>.foo {</code>
                     <code>  <b>float</b>: right;</code>
                     <code>  <b>margin-left</b>: 13px;</code>
@@ -462,7 +472,7 @@
             <div class="next">
                 <p>Обработанный CSS</p>
 
-                <pre style="font-size: 70%">
+                <pre>
                     <code>.foo {</code>
                     <code>  <b>font-size</b>: 13px;</code>
                     <code>}</code>
@@ -487,7 +497,7 @@
             <div>
                 <p>Исходный CSS</p>
 
-                <pre style="font-size: 70%">
+                <pre>
                     <code>blockquote:dir(rtl) {</code>
                     <code>  <b>margin-right</b>: 10px;</code>
                     <code>}</code>
@@ -499,7 +509,7 @@
             <div class="next">
                 <p>Обработанный CSS</p>
 
-                <pre style="font-size: 70%">
+                <pre>
                     <code>[dir="rtl"] blockquote {</code>
                     <code>  <b>margin-right</b>: 10px;</code>
                     <code>}</code>
@@ -587,7 +597,7 @@
             <div>
                 <p>Исходный CSS</p>
 
-                <pre style="font-size: 70%">
+                <pre style="font-size: 90%">
                     <code>:root {</code>
                     <code>  <b>--fontSize</b>: 1rem;</code>
                     <code>  <b>--mainColor</b>: #12345678;</code>
@@ -601,13 +611,13 @@
             <div class="next">
                 <p>Обработанный CSS</p>
 
-                <pre style="font-size: 70%">
+                <pre style="font-size: 90%">
                     <code>:root {</code>
                     <code>  <b>--fontSize</b>: 1rem;</code>
-                    <code>  <b>--mainColor</b>: rgba(18,52,86,0.47059);</code>
+                    <code>  <b>--mainColor</b>: rgba(18,52,86,0.47);</code>
                     <code>}</code>
                     <code>body {</code>
-                    <code>  <b>color</b>: rgba(18,52,86,0.47059);</code>
+                    <code>  <b>color</b>: rgba(18,52,86,0.47);</code>
                     <code>  <b>color</b>: var(--mainColor);</code>
                     <code>  <b>font-size</b>: 1rem;</code>
                     <code>  <b>font-size</b>: var(--fontSize);</code>
@@ -625,8 +635,8 @@
         <p>Ограничения:</p>
 
         <ul>
-            <li class="next">Custom properties только в <code>:root</code>, иначе не будет обратной совместимости</li>
-            <li class="next">Custom properties в <code>@media</code> тоже без обратной совместимости</li>
+            <li>Custom properties только в <code>:root</code>, иначе не будет обратной совместимости</li>
+            <li>Custom properties в <code>@media</code> тоже без обратной совместимости</li>
         </ul>
 
     </section>
@@ -653,15 +663,15 @@
             <div>
                 <p>Исходный CSS</p>
 
-                <pre style="font-size: 80%">
+                <pre style="font-size: 90%">
                     <code>a {</code>
                     <code>  <b>color</b>: white;</code>
                     <code>  & span { <b>color</b>: green; }</code>
                     <code>  @nest span & { <b>color</b>: blue; }</code>
                     <div class="next border">
-                    <code>  @media (min-width: 30em) {</code>
-                    <code>    <b>color</b>: yellow;</code>
-                    <code>  }</code>
+                        <code>  @media (min-width: 30em) {</code>
+                        <code>    <b>color</b>: yellow;</code>
+                        <code>  }</code>
                     </div>
                     <code>  &:hover {</code>
                     <code>    <b>color</b>: red;</code>
@@ -672,7 +682,7 @@
             <div class="next">
                 <p>Обработанный CSS</p>
 
-                <pre style="font-size: 80%">
+                <pre style="font-size: 90%">
                     <code>a { <b>color</b>: white; }</code>
                     <code>a span { <b>color</b>: green; }</code>
                     <code>span a { <b>color</b>: blue; }</code>
@@ -696,20 +706,20 @@
             <div>
                 <p>Исходный CSS</p>
 
-                <pre style="font-size: 80%">
+                <pre>
                     <code>.block {</code>
                     <code>  <b>color</b>: white;</code>
-                    <code><span class="next border">  &__element { <b>color</b>: green; }</span></code>
+                    <code><span class="next border">  &__el { <b>color</b>: green; }</span></code>
                     <code>}</code>
                 </pre>
             </div>
             <div class="next">
                 <p>Обработанный CSS</p>
 
-                <pre style="font-size: 80%">
+                <pre>
                     <code>.block {</code>
                     <code>  <b>color</b>: white;</code>
-                    <code>  &__element { <b>color</b>: green; }</code>
+                    <code>  &__el { <b>color</b>: green; }</code>
                     <code>}</code>
                 </pre>
             </div>
@@ -740,7 +750,7 @@
             <div>
                 <p>Исходный CSS</p>
 
-                <pre style="font-size: 80%">
+                <pre style="font-size: 90%">
                     <code>@custom-media --s (max-width: 480px);</code>
                     <code>@media (--s) {</code>
                     <code class="comment">  /* стили для телефона */</code>
@@ -751,7 +761,7 @@
             <div class="next">
                 <p>Обработанный CSS</p>
 
-                <pre style="font-size: 80%">
+                <pre style="font-size: 90%">
                     <code>@media (max-width: 480px) {</code>
                     <code class="comment">  /* стили для телефона */</code>
                     <code>  <b>width</b>: 100%;</code>
@@ -769,7 +779,7 @@
         <div>
             <p>Исходный CSS</p>
         
-            <pre style="font-size: 80%">
+            <pre style="font-size: 90%">
                 <code>@custom-media <b>--only-tablet</b> (<u>width</u> >= 768px) and (<u>width</u> < 1200px);</code>
                 <code>@media (<b>--only-tablet</b>) {</code>
                 <code class="comment">  /* планшет */</code>
@@ -780,7 +790,7 @@
         <div class="next">
             <p>Обработанный CSS</p>
 
-            <pre style="font-size: 80%">
+            <pre style="font-size: 90%">
                 <code>@media (<u>min-width</u>: 768px) and (<u>max-width</u>: 1199px) {</code>
                 <code class="comment">  /* планшет */</code>
                 <code>}</code>
